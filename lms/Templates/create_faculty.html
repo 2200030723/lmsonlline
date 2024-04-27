@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Faculty</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        .navbar {
+            background-color: black;
+        }
+        .container {
+            border: 5px solid black;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 500px; /* Decrease max-width */
+            height: auto; /* Adjust height */
+        }
+        .container h2 {
+            color: black; /* Header color */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark">
+        <span class="navbar-brand mb-0 h1">LMS Faculty Creation</span>
+    </nav>
+
+    <div class="container mt-3">
+        <h2>Create Faculty</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

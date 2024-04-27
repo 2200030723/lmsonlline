@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Department</title>
+    <style>
+        /* Style the main navbar */
+        .navbar {
+            background-color: #333; /* Black background */
+            overflow: hidden;
+            margin-bottom: 20px; /* Add some space below the navbar */
+        }
+
+        /* Navigation links */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* On hover, the links will change color */
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black; /* Black text */
+        }
+
+        /* Center the admin panel heading */
+        .admin-heading {
+            text-align: center;
+            color: #333; /* Text color */
+        }
+
+        /* Style the form */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-container label {
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box; /* Ensure that padding and border are included in the element's total width and height */
+        }
+
+        .form-container button[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-container button[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main navbar -->
+    <div class="navbar">
+        <!-- First link: LMS Admin Panel -->
+        <a href="#" class="admin-heading">LMS Admin Panel</a>
+    </div>
+
+    <!-- Department creation form -->
+    <div class="form-container">
+        <h2>Create Department</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_name">Department Name:</label><br>
+            <input type="text" id="id_name" name="name" required><br><br>
+            <label for="id_description">Description:</label><br>
+            <textarea id="id_description" name="description"></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

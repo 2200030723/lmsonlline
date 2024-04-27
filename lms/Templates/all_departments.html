@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Departments</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Button styles */
+        .navbar a {
+            background-color: #333;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 5px;
+            border-radius: 4px;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Button styles */
+        .action-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>LMS</h1>
+        <a href="{% url 'all_departments' %}" class="action-button">All Departments</a>
+        <a href="{% url 'create_department' %}" class="action-button">Create Department</a>
+        <a href="{% url 'admin_homepage' %}" class="action-button">Home PAGE</a> <!-- Add link to create department -->
+    </div>
+
+    <!-- Departments table -->
+    <h2>All Departments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th> <!-- Add a column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for department in departments %}
+                <tr>
+                    <td>{{ department.department_id }}</td>
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.description }}</td>
+                    <td>
+                        {% if department.department_id %}
+                            <form action="{% url 'update_department' department.department_id %}" method="get" style="display: inline;">
+                                <button type="submit" class="action-button">Update</button>
+                            </form>
+                            <form action="{% url 'delete_department' department.department_id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="action-button">Delete</button>
+                            </form>
+                        {% else %}
+                            <!-- Handle the case where department id is not available -->
+                            ID not available
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

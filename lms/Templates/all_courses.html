@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses</title>
+    <style>
+        /* CSS styles */
+        body {
+            background-color: #f0f0f0; /* Background color for the body */
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main navbar -->
+    <div class="navbar">
+        <!-- First link: LMS Admin Panel -->
+        <a href="#" class="admin-heading">LMS Admin Panel</a>
+        <a href="{% url 'admin_homepage' %}" class="action-button">Home PAGE</a>
+    </div>
+
+    <!-- Display all courses within a container -->
+    <div class="container">
+        <h2>All Courses</h2>
+        <table>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Department</th>
+                <th>Student Key</th>
+                <th>Faculty Key</th>
+            </tr>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.code }}</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.department.name }}</td>
+                <td>{{ course.studentKey }}</td>
+                <td>{{ course.facultyKey }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

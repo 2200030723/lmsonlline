@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Course</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .admin-heading {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Form container styles */
+        .form-container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Form input styles */
+        .form-container label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-container input[type="text"],
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        /* Submit button styles */
+        .form-container button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+            display: block;
+        }
+
+        .form-container button[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        /* Hide second form initially */
+        .file-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main navbar -->
+    <div class="navbar">
+        <!-- First link: LMS Admin Panel -->
+        <a href="#" class="admin-heading">LMS Admin Panel</a>
+    </div>
+
+    <!-- Form container -->
+    <div class="form-container">
+        <h1>Create</h1>
+        <!-- Radio buttons for choosing between regular form and file upload form -->
+        <input type="radio" name="createFormType" value="regular" checked onclick="toggleForm('regular-form')"> Regular Form
+        <input type="radio" name="createFormType" value="file" onclick="toggleForm('file-form')"> File Upload Form
+
+        <!-- Regular form -->
+        <form method="post" id="regular-form">
+            {% csrf_token %}
+            <  {% csrf_token %}
+            {{ form.as_p }}
+            <!-- Submit button -->
+            <button type="submit">Submit Regular Form</button>
+        </form>
+
+        <!-- File upload form -->
+        <form method="post" id="file-form" class="file-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- File upload field -->
+            <div class="form-group">
+                <input type="file" name="file" class="form-control-file">
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Submit File Form</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to toggle visibility of forms based on radio button selection
+        function toggleForm(formId) {
+            var regularForm = document.getElementById('regular-form');
+            var fileForm = document.getElementById('file-form');
+
+            if (formId === 'regular-form') {
+                regularForm.classList.remove('file-form');
+                fileForm.classList.add('file-form');
+            } else {
+                regularForm.classList.add('file-form');
+                fileForm.classList.remove('file-form');
+            }
+        }
+    </script>
+</body>
+</html>

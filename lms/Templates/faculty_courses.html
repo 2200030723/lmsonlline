@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Courses</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px; /* Add space below the navbar */
+        }
+
+        /* Table styles */
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto; /* Center the table */
+            margin-top: 20px; /* Add space above the table */
+        }
+
+        th, td {
+            border: 1px solid black; /* Add black borders */
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* No courses message styles */
+        .no-courses {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Faculty Courses</h1>
+    </div>
+
+    <!-- Courses table -->
+    {% if courses %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Department ID</th>
+                    <th>Department Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                    <tr>
+                        <td>{{ course.code }}</td>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.department.id }}</td>
+                        <td>{{ course.department.name }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="no-courses">No courses available for this faculty key.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2 class="no-courses">No courses available for this faculty key.</h2>
+    {% endif %}
+</body>
+</html>

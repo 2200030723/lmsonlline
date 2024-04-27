@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Home</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .student-home {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #fff;
+      margin-right: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #337ab7;
+    }
+
+    a:hover {
+      color: #23527c;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <!-- Navbar -->
+<div class="navbar">
+  <a href="{% url 'faculty_home' %}">Faculty Home</a> <!-- Link to Faculty Home -->
+
+
+  <a href="{% url 'faculty_courses' %}">Faculty courses</a>
+   <a href="/addAssignment?code={{ code }}">Add Assignment</a>
+
+</div>
+
+
+  <!-- Student Home Page -->
+  <div class="student-home">
+    <!-- Announcements Section -->
+    <div class="announcements">
+      <h2>Announcements</h2>
+      <ul>
+        <li><a href="#">New Assignment Posted: Due Friday</a></li>
+        <li><a href="#">Upcoming Quiz: Review Materials</a></li>
+      </ul>
+    </div>
+
+    <!-- Course Links Section -->
+    <div class="course-links">
+      <h2>Course Links</h2>
+      <ul>
+        <li><a href="#">Course Syllabus</a></li>
+        <li><a href="#">Week 1: Introduction to Course</a></li>
+        <li><a href="#">Week 2: Module 1</a></li>
+      </ul>
+    </div>
+
+    <!-- Tasks Section -->
+    <div class="tasks">
+      <h2>Tasks</h2>
+      <ul>
+        <li><a href="#">Complete Assignment 1: Due Friday</a></li>
+        <li><a href="#">Participate in Discussion Forum</a></li>
+      </ul>
+    </div>
+
+    <!-- Upcoming Events Section -->
+    <div class="upcoming-events">
+      <h2>Upcoming Events</h2>
+      <ul>
+        <li><a href="#">Quiz: Friday, April 27</a></li>
+        <li><a href="#">Assignment 2: Due May 1</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

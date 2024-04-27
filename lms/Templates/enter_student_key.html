@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Student Key</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Form container styles */
+        .container {
+            max-width: 500px;
+            margin: 20px auto; /* Center the container horizontally */
+            padding: 30px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form input styles */
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Button styles */
+        button[type="submit"] {
+            background-color: black;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Enter Student Key</h1>
+    </div>
+
+    <!-- Form container -->
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="course_id">Course ID</label>
+            <input type="text" id="course_id" name="course_id" value="2233" placeholder="Enter course ID">
+            <label for="student_key">Faculty Key</label>
+            <input type="text" id="student_key" name="student_key" value="233" placeholder="Enter faculty key">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
